@@ -1,5 +1,5 @@
 #!/bin/bash
-which go || echo "Please install go" & exit 1
+which go || echo "Please install go"  exit 1
 go build -o fast-chroot main.go
 sudo cp fast-chroot /usr/local/sbin/ 
 
@@ -7,7 +7,7 @@ echo "Заменить artix-chroot на fast-chroot"
 read -p "||[Y/n]|:  "  -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]] || [[ -z $REPLY ]]; then
     echo "✅ Используем fast-chroot"
-    ln -sf /usr/local/sbin/fast-chroot /usr/sbin/artix-chroot
+    sudo ln -sf /usr/local/sbin/fast-chroot /usr/sbin/artix-chroot
 else
     echo "🔁 Оставляем artix-chroot"
 fi
